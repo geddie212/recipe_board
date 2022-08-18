@@ -4,8 +4,8 @@ import os
 URL = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch"
 
 HEADERS = {
-    "X-RapidAPI-Key": "38daee0f6bmsh180abd9b1be9836p1f2068jsn36f0669cba62",
-    "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    "X-RapidAPI-Key": os.environ.get("X-RapidAPI-Key"),
+    "X-RapidAPI-Host": os.environ.get("X-RapidAPI-Host")
 }
 
 class NutritionAPI:
