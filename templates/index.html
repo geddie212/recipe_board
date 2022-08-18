@@ -1,0 +1,215 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/nom-fav.ico') }}">
+    <title>NOM | HOME </title>
+</head>
+<body>
+<nav class="navbar navbar-light bg-light">
+    <a href="{{ url_for('home') }}" style="margin-left:48%;"><img class="logo" src="{{ url_for('static', filename='img/nomnom.png') }}" alt=""></a>
+    <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>
+<section id="thehero">
+    <div class="the-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Find, Save and Share Recipes</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p>🌶️ Create boards, share recipes with friends and family</p>
+                </div>
+            </div>
+            <form class="filter_form" action="{{ url_for('results') }}" method="post">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="query" class="location-input"
+                               placeholder="Search 2M+ Recipes" required>
+                    </div>
+                </div>
+                <div class="row dropdown-row">
+                    <div class="col">
+                        <select id="cuisine" name="cuisine">
+                            <option disabled selected>Cuisine</option>
+                            <option value="">All</option>
+                            <option value="african">African</option>
+                            <option value="american">American</option>
+                            <option value="british">British</option>
+                            <option value="cajun">Cajun</option>
+                            <option value="caribbean">Caribbean</option>
+                            <option value="chinese">Chinese</option>
+                            <option value="eastern european">Eastern European</option>
+                            <option value="french">French</option>
+                            <option value="german">German</option>
+                            <option value="greek">Greek</option>
+                            <option value="indian">Indian</option>
+                            <option value="irish">Irish</option>
+                            <option value="italian">Italian</option>
+                            <option value="japanese">Japanese</option>
+                            <option value="jewish">Jewish</option>
+                            <option value="korean">Korean</option>
+                            <option value="mexican">Mexican</option>
+                            <option value="middle eastern">Middle Eastern</option>
+                            <option value="nordic">Nordic</option>
+                            <option value="Latin American">Latin American</option>
+                            <option value="southern">Southern</option>
+                            <option value="spanish">Spanish</option>
+                            <option value="thai">Thai</option>
+                            <option value="vietnamese">Vietnamese</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <select id="type" name="type">
+                            <option disabled selected>Type</option>
+                            <option value="all">All</option>
+                            <option value="appetizer">Appetizer</option>
+                            <option value="beverage">Beverage</option>
+                            <option value="bread">Bread</option>
+                            <option value="breakfast">Breakfast</option>
+                            <option value="dessert">Dessert</option>
+                            <option value="main course">Main Course</option>
+                            <option value="drink">Drink</option>
+                            <option value="salad">Salad</option>
+                            <option value="sauce">Sauce</option>
+                            <option value="side dish">Side Dish</option>
+                            <option value="soup">Soup</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="form-p">Diet</p>
+                    </div>
+                </div>
+                <div class="row checkbox-container">
+                    <div class="col">
+                        <input class="form-check-input" name="vegetarian" type="checkbox" value="diet">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Vegetarian
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="vegan" type="checkbox" value="diet">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Vegan
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="lacto-vegetarian" type="checkbox" value="diet">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Lacto Vegetarian
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="ovo-vegetarian" type="checkbox" value="diet">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Ovo Vegetarian
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="paleo" type="checkbox" value="diet">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Paleo
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="pescetarian" type="checkbox" value="diet">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Pescetarian
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="primal" type="checkbox" value="diet">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Primal
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p class="form-p">Allergies</p>
+                    </div>
+                </div>
+                <div class="row checkbox-container">
+                    <div class="col">
+                        <input class="form-check-input" name="dairy" type="checkbox" value="intolerances">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Dairy
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="egg" type="checkbox" value="intolerances">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Egg
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="gluten" type="checkbox" value="intolerances">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Gluten
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="seafood" type="checkbox" value="intolerances">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Seafood
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="sesame" type="checkbox" value="intolerances">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Sesame
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="shellfish" type="checkbox" value="intolerances">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Shellfish
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="soy" type="checkbox" value="intolerances">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Soy
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="sulfite" type="checkbox" value="intolerances">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Sulfite
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="tree-nut" type="checkbox" value="intolerances">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Tree Nut
+                        </label>
+                    </div>
+                    <div class="col">
+                        <input class="form-check-input" name="wheat" type="checkbox" value="intolerances"
+                               id="flexCheckChecked">
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Wheat
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-right">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
